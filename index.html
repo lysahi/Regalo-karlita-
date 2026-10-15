@@ -51,12 +51,9 @@ p{font-size:1.08rem;line-height:1.85}
 .final{background:linear-gradient(145deg,#fff2f7,#f4efff);text-align:center}
 .big-heart{font-size:3rem;animation:beat 1.8s infinite}
 footer{text-align:center;font: .8rem Arial,sans-serif;color:#a58d9d;padding:20px}
-.musicbar{position:fixed;bottom:12px;right:12px;z-index:10;display:flex;gap:8px;align-items:center;background:#fffaf3ed;border:1px solid #efd7e4;border-radius:999px;padding:7px;box-shadow:0 8px 28px #71526d20}
-.musicbar button{border:0;border-radius:999px;background:#f4d4e2;color:#8e4b6c;padding:10px 13px}
-.musicbar small{font: .72rem Arial,sans-serif;padding-right:8px}
 .confetti{position:fixed;top:-20px;z-index:20;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(700deg);opacity:0}}
-@media(max-width:600px){main{padding:12px 12px 80px}.hero{min-height:86vh}.cards{grid-template-columns:1fr}.message-card{min-height:110px}.musicbar small{display:none}section{border-radius:22px}}
+@media(max-width:600px){main{padding:12px 12px 20px}.hero{min-height:86vh}.cards{grid-template-columns:1fr}.message-card{min-height:110px}section{border-radius:22px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -121,13 +118,7 @@ footer{text-align:center;font: .8rem Arial,sans-serif;color:#a58d9d;padding:20px
   </section>
   <footer>Creado con cariño para Karlita · Un pequeño universo solo para ti ♡</footer>
 </main>
-<div class="musicbar">
-  <button id="musicButton" onclick="toggleMusic()" aria-label="Activar música">♫ Música: apagada</button>
-  <small>Opcional · añade tu canción favorita</small>
-</div>
-<audio id="music" loop preload="none"><source src="musica.mp3" type="audio/mpeg"></audio>
 <script>
-let musicOn=false;
 function openLetter(){
   const env=document.getElementById('envelope');
   const letter=document.getElementById('letter');
@@ -136,13 +127,6 @@ function openLetter(){
   document.getElementById('openButton').textContent='La carta está abierta ♡';
 }
 function reveal(card){card.classList.toggle('revealed');}
-async function toggleMusic(){
-  const audio=document.getElementById('music'), button=document.getElementById('musicButton');
-  if(!musicOn){
-    try{await audio.play();musicOn=true;button.textContent='♫ Música: encendida';}
-    catch(e){button.textContent='♫ Añade musica.mp3';alert('Para que la música funcione al compartir la página, coloca un archivo MP3 llamado musica.mp3 junto a index.html.');}
-  }else{audio.pause();musicOn=false;button.textContent='♫ Música: apagada';}
-}
 function celebrate(){
   document.getElementById('surprise').hidden=false;
   const symbols=['♡','✦','✿','💗','✨'];
